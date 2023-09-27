@@ -1,0 +1,162 @@
+﻿<Window x:Class="LatexGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LatexGenerator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel LastChildFill="True">
+        <Border DockPanel.Dock="Bottom" Background="SkyBlue" BorderBrush="Black" BorderThickness="1" Height="25">
+            <TextBox x:Name="LatexEquation" TextAlignment="Center" IsReadOnly="True">Das ist der Latex Code</TextBox>
+        </Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0">
+                <UniformGrid x:Name="SymbolButtonsContainer" TextElement.FontSize="30" TextElement.FontFamily="Arial">
+                    <Button x:Name="FractionBelowButton">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="13" HorizontalAlignment="Center">x</TextBlock>
+                            <Separator Width="15" Margin="1,1,1,1" Background="Black"></Separator>
+                            <Border Padding="1,1,1,1" >
+                                <Rectangle Height="12" Width="12" Stroke="Black" StrokeDashArray="2.2"/>
+                            </Border>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="FractionOnTopButton">
+                        <StackPanel Orientation="Vertical">
+                            <Border Padding="1,1,1,1">
+                                <Rectangle Height="12" Width="12" Stroke="Black" StrokeDashArray="2.2"/>
+                            </Border>
+                            <Separator Width="15" Margin="1,1,1,1" Background="Black"></Separator>
+                            <TextBlock FontSize="13" HorizontalAlignment="Center">x</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SquaredButton">x²</Button>
+                    <Button x:Name="CubedButton">x³</Button>
+                    <Button x:Name="ExponentForBaseButton">
+                        <Grid>
+                            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+                                <Rectangle Margin="15,0,0,0" Height="12" Width="12" Stroke="Black" StrokeDashArray="2.2"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+                                <TextBlock>x</TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="BaseForExponentButton">
+                        <Grid>
+                            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+                                <TextBlock FontWeight="Medium" FontSize="22" Margin="35,0,0,25">x</TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+                                <Rectangle Margin="0,15,0,0" Height="20" Width="20" Stroke="Black" StrokeDashArray="2.2"/>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="SubscriptForBaseButton">
+                        <Grid>
+                            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Bottom">
+                                <Rectangle Margin="15,0,0,0" Height="12" Width="12" Stroke="Black" StrokeDashArray="2.2"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+                                <TextBlock>x</TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="BaseForSubscriptButton">
+                        <Grid>
+                            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Bottom">
+                                <TextBlock FontWeight="Medium" FontSize="22" Margin="35,20,0,0">x</TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+                                <Rectangle Margin="0,15,0,0" Height="20" Width="20" Stroke="Black" StrokeDashArray="2.2"/>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="ParenthesesButton">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>(</TextBlock>
+                            <Rectangle Margin="5,3,4,0" Height="20" Width="20" Stroke="Black" StrokeDashArray="2.2"/>
+                            <TextBlock>)</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="MultiplyRightButton">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>x ∗ </TextBlock>
+                            <Rectangle Margin="5,3,4,0" Height="20" Width="20" Stroke="Black" StrokeDashArray="2.2"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="MultiplyLeftButton">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Margin="5,3,4,0" Height="20" Width="20" Stroke="Black" StrokeDashArray="2.2"/>
+                            <TextBlock>∗ x</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <!--<Button x:Name="RootButton">
+                        <DockPanel>
+                            <Rectangle Margin="0,0,0,5" Height="15" Width="15" Stroke="Black" StrokeDashArray="2.2"/>
+                            <TextBlock>&#x221A;</TextBlock>
+                            <StackPanel Orientation="Vertical">
+                                <Separator VerticalAlignment="Top" Width="20" Background="Black"></Separator>
+                                <Rectangle Margin="0,2,0,0" Height="15" Width="15" Stroke="Black" StrokeDashArray="2.2"/>
+                            </StackPanel>
+                        </DockPanel>
+                    </Button>-->
+                </UniformGrid>
+            </Border>
+            <Border Grid.Column="1">
+                <Grid x:Name="Results">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Row="1" Grid.Column="0" Margin="3,3,3,3" Click="OnNavigateLeft">Left</Button>
+                        <Button Grid.Row="1" Grid.Column="2" Margin="3,3,3,3" Click="OnNavigateRight">Right</Button>
+                        <Button Grid.Row="0" Grid.Column="1" Margin="3,3,3,3" Click="OnNavigateUp">Up</Button>
+                        <Button Grid.Row="2" Grid.Column="1" Margin="3,3,3,3" Click="OnNavigateDown">Down</Button>
+                        <Button Grid.Row="1" Grid.Column="1" Margin="3,3,3,3" Click="OnDelete">Delete</Button>
+                    </Grid>
+                    <!--<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Rectangle Height="12" Width="12" Stroke="Black" StrokeDashArray="2.2"/>
+                    </StackPanel>-->
+                    <Grid Grid.Row="2" Margin="0,20,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1.3*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">Symbol</TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">Latex-Code</TextBlock>
+                        <TextBox Grid.Row="2" Grid.Column="1" x:Name="LatexCodeInput" Margin="10,0,10,0" VerticalAlignment="Center"></TextBox>
+                        <TextBox Grid.Row="2" Grid.Column="0" x:Name="CharacterInput" MaxLength="5" Margin="10,0,10,0" VerticalAlignment="Center"></TextBox>
+                        <Border Margin="25,8,25,5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Button x:Name="InsertCustomButton">Insert</Button>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>
